@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>100 JS Projects</title>
+  <!-- main style sheet -->
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="./dice-roll-simulator.css">
+   <!-- responsive css -->
+   <link rel="stylesheet" href="../../css/responsive.css">
+  <!-- main JavaScript file -->
+  <script type="module" src="../../js/main.js" defer></script>
+  <!-- tip-calculator js -->
+  <script type="module" src="./dice-roll-simulator.js" defer></script>
+</head>
+<body>
+  <!-- Nav bar -->
+  <nav>
+    <!-- menu button -->
+    <button type="button" title="show-projects-menu" class="menu">
+      <span class="line"></span>
+    </button>
+    <!-- Title -->
+    <h1>100 JS PROJECTS</h1>
+    <!-- search from -->
+    <form action="">
+      <label for="search" aria-hidden="true">search</label>
+      <input type="search" name="search" id="search" placeholder="search projects">
+      <button type="submit">search</button>
+    </form>
+  </nav>
+  <!-- side bar -->
+  <aside>
+    <h3>Projects</h3>
+    <hr>
+    <ul class="projects-list">
+      <!-- here li tag will append using JS -->
+    </ul>
+    <hr>
+    <p class="total-projects"></p>
+  </aside>
+  <!-- Project code -->
+  <main id="app">
+    <h1>Dice Roll Simulator</h1>
+    <div class="dimension">
+      <button type="button" class="dice-3d-btn">Show 3d dice</button>
+    </div>
+    <div class="dice-2d">
+      <div class="dice-face"></div>
+      <!-- <div class="dice-face dice-face-back">6</div>
+      <div class="dice-face dice-face-left">4</div>
+      <div class="dice-face dice-face-right">3</div>
+      <div class="dice-face dice-face-top">5</div>
+      <div class="dice-face dice-face-bottom">2</div> -->
+    </div>
+    <!-- 3d dice -->
+    <div class="dice-3d">
+      <div class="dice-face dice-face-front"><span>&#9856;</span></div>
+      <div class="dice-face dice-face-back"><span>&#9861;</span></div>
+      <div class="dice-face dice-face-left"><span>&#9859;</span></div>
+      <div class="dice-face dice-face-right"><span>&#9858;</span></div>
+      <div class="dice-face dice-face-top"><span>&#9860;</span></div>
+      <div class="dice-face dice-face-bottom"><span>&#9857;</span></div>
+    </div>
+    
+    <!-- roll dice button -->
+    <button type="button" class="roll-btn">Roll the dice</button>
+    <!-- prev result -->
+    <div class="result">here will show the result.</div>
+  </main>
+</body>
+</html>
