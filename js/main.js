@@ -7,7 +7,6 @@ const searchForm = document.querySelector("form");
 const projectsList = document.querySelectorAll(".projects-list");
 const totalProjects = document.querySelector("aside .total-projects");
 
-
 // hide menu button on home page
 window.addEventListener("DOMContentLoaded", () => {
   if(menuHidden) menuHidden.style.display = 'none'
@@ -43,7 +42,7 @@ const redirectUrl = (element) => {
     const targetPath = getTargetPathStructure(
       e.currentTarget.textContent.split(". ")[1]
     );
-    const pathName = "/projects/" + targetPath + "/" + targetPath + ".html";
+    const pathName = "/projects/" + targetPath + "/" + "index.html";
     activeUrl(pathName, element);
   });
 };
