@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>100 JS Projects</title>
+  <!-- main style sheet -->
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="./tip-calculator.css">
+  <!-- main JavaScript file -->
+  <script type="module" src="../../js/main.js" defer></script>
+  <!-- tip-calculator js -->
+  <script type="module" src="./tip-calculator.js" defer></script>
+</head>
+<body>
+  <!-- Nav bar -->
+  <nav>
+    <!-- menu button -->
+    <button type="button" title="show-projects-menu" class="menu">
+      <span class="line"></span>
+    </button>
+    <!-- Title -->
+    <h1>100 JS PROJECTS</h1>
+    <!-- search from -->
+    <form action="">
+      <label for="search" aria-hidden="true">search</label>
+      <input type="search" name="search" id="search" placeholder="search projects">
+      <button type="submit">search</button>
+    </form>
+  </nav>
+  <!-- side bar -->
+  <aside>
+    <h3>Projects</h3>
+    <hr>
+    <ul class="projects-list">
+      <!-- here li tag will append using JS -->
+    </ul>
+    <hr>
+    <p class="total-projects"></p>
+  </aside>
+  <!-- Project code -->
+  <main id="app">
+    <h1>Tip Calculator</h1>
+    <p>Enter the bill amount and tip percentage to calculate the total Bill amount.</p>
+    <form action="">
+      <div class="input-field">
+        <label for="amount">Bill Amount</label>
+        <input type="number" name="amount" id="amount" placeholder="e.g 100" required >
+      </div>
+      <div class="input-field">
+        <label for="percentage">Tip Percentage</label>
+        <input type="number" name="percentage" id="percentage" placeholder="e.g 10%" required >
+      </div>
+      <button type="submit">Calculate</button>
+    </form>
+    <div class="result">
+      <span>Total : </span><b>$110.00</b>
+    </div>
+  </main>
+</body>
+</html>

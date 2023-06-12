@@ -1,0 +1,5 @@
+#app .result b.prev-rst{
+  -webkit-user-select: none;
+  user-select: none;
+  color: #888888;
+}
