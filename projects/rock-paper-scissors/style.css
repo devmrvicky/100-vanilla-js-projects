@@ -1,0 +1,63 @@
+.choices-btn{
+  display: flex;
+  gap: 10px;
+  justify-content: space-evenly;
+  padding: 20px 0;
+}
+.choices-btn button{
+  background: transparent;
+  border: none;
+  font-size: 3rem;
+  cursor: pointer;
+  width: 100px !important;
+  height: 100px !important;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+  transition: all .3s;
+}
+.choices-btn button span{
+  position: relative;
+  z-index: 9;
+}
+.choices-btn button::before{
+  content: '';
+  width: 0%;
+  height: 0%;
+  border-radius: 50%;
+  background-color: #99999917;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: width .5s, height .5s;
+}
+.choices-btn button.hover::before{
+  width: 150px;
+  height: 150px
+}
+.result{
+  text-align: center;
+  background-color: #99999917;
+  /* padding: 10px; */
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  height: 40px;
+  line-height: 40px;
+  transform: translateY(50px);
+  opacity: 0;
+  transition: all .4s ease-in-out;
+}
+.result.pop-up{
+  transform: translateY(0);
+  opacity: 1;
+}
+p, p.scores{
+  font-size: 2rem;
+}
+p b.player-score{
+  color: rgb(22, 204, 22);
+}
+p b.computer-score{
+  color: red;
+}

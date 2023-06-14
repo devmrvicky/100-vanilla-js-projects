@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>100 JS Projects</title>
+  <!-- main style sheet -->
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="./style.css">
+  <!-- responsive css -->
+  <link rel="stylesheet" href="../../css/responsive.css">
+  <!-- main JavaScript file -->
+  <script type="module" src="../../js/main.js" defer></script>
+  <!-- tip-calculator js -->
+  <script type="module" src="./script.js" defer></script>
+</head>
+
+<body>
+  <!-- Nav bar -->
+  <nav>
+    <!-- menu button -->
+    <button type="button" title="show-projects-menu" class="menu">
+      <span class="line"></span>
+    </button>
+    <!-- Title -->
+    <h1>100 JS PROJECTS</h1>
+    <!-- search from -->
+    <form action="">
+      <label for="search" aria-hidden="true">search</label>
+      <input type="search" name="search" id="search" placeholder="search projects">
+      <button type="submit">search</button>
+    </form>
+  </nav>
+  <!-- side bar -->
+  <aside>
+    <h3>Projects</h3>
+    <hr>
+    <ul class="projects-list">
+      <!-- here li tag will append using JS -->
+    </ul>
+    <hr>
+    <p class="total-projects"></p>
+  </aside>
+  <!-- Project code -->
+  <main id="app">
+    <h1>Rock paper scissors</h1>
+    <p>Choose your move:</p>
+    <div class="choices-btn">
+      <button type="button" data-choice="rock"><span>&#129704;</span></button>
+      <button type="button" data-choice="paper"><span>&#128221;</span></button>
+      <button type="button" data-choice="scissors"><span>&#9986;</span></button>
+    </div>
+    <div class="result-area">
+      <p class="result">You win! scissors beats paper</p>
+      <p class="scores">Your score: <b class="player-score">0</b> computer score: <b class="computer-score">0</b></p>
+    </div>
+  </main>
+</body>
+
+</html>

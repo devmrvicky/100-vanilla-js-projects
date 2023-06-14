@@ -6,6 +6,7 @@ const menuHidden = document.querySelector('nav .hidden')
 const searchForm = document.querySelector("form");
 const projectsList = document.querySelectorAll(".projects-list");
 const totalProjects = document.querySelector("aside .total-projects");
+const appBody = document.querySelector('main#app')
 
 // hide menu button on home page
 window.addEventListener("DOMContentLoaded", () => {
@@ -52,7 +53,7 @@ searchForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const searchInput = e.currentTarget.children.search;
   let targetPath = getTargetPathStructure(searchInput.value);
-  const pathName = "/projects/" + targetPath + "/" + targetPath + ".html";
+  const pathName = "/projects/" + targetPath + "/" + "index.html";
   activeUrl(pathName);
   searchInput.value = "";
 });
@@ -60,16 +61,14 @@ searchForm.addEventListener("submit", (e) => {
 const listProjects = (projects) => {
   projects.forEach((project, index) => {
     let li = document.createElement("li");
-    
+    // console.log(project)
     projectsList.forEach(projectList => {
       if(projectList.classList.contains('from-main')){
-        console.log(project)
         const imgUrl = `../img/${project.toLowerCase().split(' ').join('-')}.png`
         li.innerHTML = `<div><div class="img-container"><img src=${imgUrl}></div><span class="s-no">${index + 1}.</span> <span class="project-name">${project}</span></div>`
       }else{
         li.textContent = `${index + 1}. ${project}`;
       }
-      
       projectList.append(li)
     })
     redirectUrl(li);
