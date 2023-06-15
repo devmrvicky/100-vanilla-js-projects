@@ -8,6 +8,7 @@ body{
   width: 100%;
   min-height: 100vh;
   background-color: #f8f8f8d7;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 /* nav */
 nav{

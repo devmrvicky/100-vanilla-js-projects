@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>100 JS Projects</title>
+  <!-- main style sheet -->
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="./style.css">
+  <!-- responsive css -->
+  <link rel="stylesheet" href="../../css/responsive.css">
+  <!-- main JavaScript file -->
+  <script type="module" src="../../js/main.js" defer></script>
+  <!-- tip-calculator js -->
+  <script type="module" src="./script.js" defer></script>
+  <!-- font awesome cdn link -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+  <!-- Nav bar -->
+  <nav>
+    <!-- menu button -->
+    <button type="button" title="show-projects-menu" class="menu">
+      <span class="line"></span>
+    </button>
+    <!-- Title -->
+    <h1>100 JS PROJECTS</h1>
+    <!-- search from -->
+    <form action="">
+      <label for="search" aria-hidden="true">search</label>
+      <input type="search" name="search" id="search" placeholder="search projects">
+      <button type="submit">search</button>
+    </form>
+  </nav>
+  <!-- side bar -->
+  <aside>
+    <h3>Projects</h3>
+    <hr>
+    <ul class="projects-list">
+      <!-- here li tag will append using JS -->
+    </ul>
+    <hr>
+    <p class="total-projects"></p>
+  </aside>
+  <!-- Project code -->
+  <main id="app" data-project-name="step-progress-bar">
+    <h1>Step progress bar</h1>
+    <div class="progress-bar">
+      <div class="progress-line">
+        <span class="progress-line-status"></span>
+      </div>
+      <div class="progress-step">
+        <i class="fa-regular fa-square-check fa-beat-fade"></i>
+        <span class="step">step 1</span>
+      </div>
+      <div class="progress-step">
+        <!-- <i class="fa-solid fa-square-check"></i> -->
+        <i class="fa-regular fa-square-check"></i>
+        <span class="step">step 2</span>
+        <!-- <i class="fa-solid fa-square-check fa-shake"></i> -->
+      </div>
+      <div class="progress-step">
+        <i class="fa-regular fa-square-check"></i>
+        <span class="step">step 3</span>
+      </div>
+      <div class="progress-step">
+        <i class="fa-regular fa-square-check"></i>
+        <span class="step">step 4</span>
+      </div>
+    </div>
+    <!-- buttons -->
+    <div class="btns">
+      <button type="button" data-dir="left">&larr;</button>
+      <button type="button" data-dir="right">&rarr;</button>
+    </div>
+  </main>
+</body>
+
+</html>
