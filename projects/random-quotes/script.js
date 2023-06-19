@@ -9,25 +9,29 @@ quoteEle.innerHTML = `<div class="loading-img">
 getQuoteBtn.disabled = true;
 
 const getRandomQuote = async (url, api) => {
-  const response = await fetch(url, {
-    headers: {
-      "Content-Type": "application/json",
-      "X-Api-Key": api,
-    },
-  });
-  const data = await response.json();
-  let quote = `
-  <p>
-    <i class="fa-solid fa-quote-left"></i>
-    <span>${data[0].quote}</span>
-    <i class="fa-solid fa-quote-right"></i>
-  </p>
-  <div class="author">
-    <span></span>
-    <span>${data[0].author}</span>
-  </div>
-`;
-  quoteEle.innerHTML = quote;
+  try {
+    const response = await fetch(url, {
+      headers: {
+        "Content-Type": "application/json",
+        "X-Api-Key": api,
+      },
+    });
+    const data = await response.json();
+    let quote = `
+    <p>
+      <i class="fa-solid fa-quote-left"></i>
+      <span>${data[0].quote}</span>
+      <i class="fa-solid fa-quote-right"></i>
+    </p>
+    <div class="author">
+      <span></span>
+      <span>${data[0].author}</span>
+    </div>
+  `;
+    quoteEle.innerHTML = quote;
+  } catch (error) {
+    quoteEle.innerHTML = `<i class="error-message">${error.message}</i>`;
+  }
   getQuoteBtn.disabled = false
 };
 
