@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile Statistics</title>
+  <!-- main style sheet -->
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="./style.css">
+  <!-- responsive css -->
+  <link rel="stylesheet" href="../../css/responsive.css">
+  <!-- main JavaScript file -->
+  <script type="module" src="../../js/main.js" defer></script>
+  <!-- tip-calculator js -->
+  <script type="module" src="./script.js" defer></script>
+  <!-- font awesome cdn link -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+  <!-- Nav bar -->
+  <nav>
+    <!-- menu button -->
+    <button type="button" title="show-projects-menu" class="menu">
+      <span class="line"></span>
+    </button>
+    <!-- Title -->
+    <h1>100 JS PROJECTS</h1>
+    <!-- search from -->
+    <form action="">
+      <label for="search" aria-hidden="true">search</label>
+      <input type="search" name="search" id="search" placeholder="search projects">
+      <button type="submit">search</button>
+    </form>
+  </nav>
+  <!-- side bar -->
+  <aside>
+    <h3>Projects</h3>
+    <hr>
+    <ul class="projects-list">
+      <!-- here li tag will append using JS -->
+    </ul>
+    <hr>
+    <p class="total-projects"></p>
+  </aside>
+  <!-- Project code -->
+  <main id="app" data-project-name="profile-statistics">
+    <h1>Profile Statistics</h1>
+    <div class="stats-container">
+      <div class="stats view">
+        <i class="fa-solid fa-eye"></i>
+        <span class="stats-value" data-value="1000" data-target-value="1000">1000</span>
+        <div class="bar">
+          <span></span>
+        </div>
+        <span class="stats-name">view</span>
+      </div>
+      <div class="stats like">
+        <i class="fa-solid fa-thumbs-up"></i>
+        <span class="stats-value" data-value="500" data-target-value="1000">500</span>
+        <div class="bar">
+          <span></span>
+        </div>
+        <span class="stats-name">Like</span>
+      </div>
+      <div class="stats comment">
+        <i class="fa-solid fa-comment"></i>
+        <span class="stats-value" data-value="100" data-target-value="200">90</span>
+        <div class="bar">
+          <span></span>
+        </div>
+        <span class="stats-name">Comment</span>
+      </div>
+    </div>
+  </main>
+</body>
+
+</html>

@@ -8,23 +8,34 @@ const projectsList = document.querySelectorAll(".projects-list");
 const totalProjects = document.querySelector("aside .total-projects");
 const mainAppBody = document.querySelector("main#app");
 
+// set favicon manually
+const faviconElem = document.createElement("link");
+const attributes = {
+  rel: "shortcut icon",
+  href: "../../img/favicon.ico",
+  type: "image/x-icon",
+};
+for (let key in attributes) {
+  faviconElem.setAttribute(key, attributes[key]);
+}
+document.head.prepend(faviconElem);
+
 // get target file structure
 const targetNameStructure = (text) => text.toLowerCase().split(" ").join("-");
 
 // hide menu button on home page
 window.addEventListener("DOMContentLoaded", () => {
   const projectListArr = Array.from(projectsList[0].children);
-  if(mainAppBody){
-    
-  const targetAttribute = mainAppBody.getAttribute("data-project-name");
-  projectListArr.forEach((project) => {
-    if (
-      targetNameStructure(project.textContent.split(". ")[1]) ===
-      targetAttribute
-    )
-      project.classList.add("active");
-  });
-}
+  if (mainAppBody) {
+    const targetAttribute = mainAppBody.getAttribute("data-project-name");
+    projectListArr.forEach((project) => {
+      if (
+        targetNameStructure(project.textContent.split(". ")[1]) ===
+        targetAttribute
+      )
+        project.classList.add("active");
+    });
+  }
   if (menuHidden) menuHidden.style.display = "none";
 });
 
