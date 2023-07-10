@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile Statistics</title>
+  <!-- main style sheet -->
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="./style.css">
+  <!-- responsive css -->
+  <link rel="stylesheet" href="../../css/responsive.css">
+  <!-- main JavaScript file -->
+  <script type="module" src="../../js/main.js" defer></script>
+  <!-- tip-calculator js -->
+  <script type="module" src="./script.js" defer></script>
+  <!-- font awesome cdn link -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+
+<body>
+  <!-- Nav bar -->
+  <nav>
+    <!-- menu button -->
+    <button type="button" title="show-projects-menu" class="menu">
+      <span class="line"></span>
+    </button>
+    <!-- Title -->
+    <h1>100 JS PROJECTS</h1>
+    <!-- search from -->
+    <form action="">
+      <label for="search" aria-hidden="true">search</label>
+      <input type="search" name="search" id="search" placeholder="search projects">
+      <button type="submit">search</button>
+    </form>
+  </nav>
+  <!-- side bar -->
+  <aside>
+    <h3>Projects</h3>
+    <hr>
+    <ul class="projects-list">
+      <!-- here li tag will append using JS -->
+    </ul>
+    <hr>
+    <p class="total-projects"></p>
+  </aside>
+  <!-- Project code -->
+  <main id="app" data-project-name="image-slider">
+    <h1>Image slider</h1>
+    <div class="img-wrapper">
+      <div class="btn-wrapper left">
+        <button title="left" class="ctrl-btn">
+          <i class="fa fa-angle-left"></i>
+        </button>
+      </div>
+      <div class="carousel">
+        <!-- <img src="https://picsum.photos/id/240/1000/500" alt="Image 1">
+        <img src="https://picsum.photos/id/238/1000/500" alt="Image 2">
+        <img src="https://picsum.photos/id/239/1000/500" alt="Image 3">
+        <img src="https://picsum.photos/id/236/1000/500" alt="Image 4">
+        <img src="https://picsum.photos/id/235/1000/500" alt="Image 5">
+        <img src="https://picsum.photos/id/234/1000/500" alt="Image 6"> -->
+        <img src="../../img/s1.jpg" alt="Image 1">
+        <img src="../../img/s2.jpg" alt="Image 2">
+        <img src="../../img/s3.jpg" alt="Image 3">
+        <img src="../../img/s4.jpg" alt="Image 4">
+        <img src="../../img/s5.jpg" alt="Image 5">
+        <img src="../../img/s6.jpg" alt="Image 6">
+        <img src="../../img/s7.jpg" alt="Image 7">
+      </div>
+      <!-- pagination -->
+      <div class="pagination-wrapper">
+        <!-- here code will inject using js -->
+        <!-- <span class="pagination-btn" data-btn-no="1"></span>
+        <span class="pagination-btn" data-btn-no="2"></span>
+        <span class="pagination-btn" data-btn-no="3"></span>
+        <span class="pagination-btn" data-btn-no="4"></span>
+        <span class="pagination-btn" data-btn-no="5"></span>
+        <span class="pagination-btn" data-btn-no="6"></span>
+        <span class="pagination-btn" data-btn-no="7"></span> -->
+      </div>
+      <div class="btn-wrapper right">
+        <button title="right" class="ctrl-btn">
+          <i class="fa fa-angle-right"></i>
+        </button>
+      </div>
+    </div>
+  </main>
+</body>
+
+</html>

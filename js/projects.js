@@ -8,5 +8,7 @@ export const projects = [
   "Step progress bar",
   "random-quotes",
   "Image gallery",
-  "Profile Statistics"
+  "Profile Statistics",
+  "Counter Animation",
+  "Image slider"
 ];

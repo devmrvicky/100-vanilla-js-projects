@@ -1,0 +1,35 @@
+.counter-container {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  margin-top: 30px;
+}
+.counter-container button{
+  width: 200px !important;
+}
+
+.result {
+  border: 1px solid;
+  /* padding: 10px; */
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+  text-align: center;
+  scroll-behavior: smooth;
+}
+
+.slider {
+  display: block;
+  width: 100%;
+  height: 100%;
+  font-size: 1.5rem;
+  line-height: 50px;
+}
+
+/* .active{
+  transform: translateY(-30px);
+} */
+/*
+.prev{
+  transform: translateY(-50px);
+} */
