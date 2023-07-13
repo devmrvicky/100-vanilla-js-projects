@@ -157,12 +157,14 @@ const showEventsOnClick = (dateCell) => {
         const li = document.createElement("li");
         li.className = "event";
         li.innerHTML = `
-      <div class="event-name">${event.name}</div>
-      <div class="event-time">${event.startTime} Am - ${event.endTime} AM</div>
-      <button class="event-menu" title="event-menu">
-        <i class="fa-solid fa-ellipsis-stroke"></i>
-      </button>
-      `;
+          <div class="event-name">${event.name}</div>
+          <div class="event-time">${event.startTime} Am - ${event.endTime} AM</div>
+          <button class="event-menu" title="event-menu">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </button>
+          `;
         ul.append(li);
       }
     }
@@ -337,7 +339,7 @@ const handleSubmit = (e) => {
     endTime: dateTimeObj.eventEndTime,
   };
   if (uniqueEventName in allEvents) {
-    allEvents[uniqueEventName].push(newObj)
+    allEvents[uniqueEventName].push(newObj);
   } else {
     let newArr = [];
     newArr.push(newObj);
