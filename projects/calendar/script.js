@@ -3,6 +3,7 @@ const timeLine = document.querySelector(".time-line");
 const datesElem = document.querySelector(".dates");
 const daysElem = document.querySelector(".days");
 const eventsElem = document.querySelector(".events");
+const ul = eventsElem.querySelector("ul");
 const module = document.querySelector(".module");
 const addEventBtn = document.querySelector(".add-event-btn");
 
@@ -18,17 +19,8 @@ let dateTimeObj = {
   eventDay: dateObj.getDay(),
   eventMonth: dateObj.getMonth(),
   eventYear: dateObj.getFullYear(),
-  eventHour: dateObj.getHours(),
-  eventMinute: dateObj.getMinutes(),
-  getEventTime: function () {
-    if (this.eventMinute < 10) {
-      this.eventMinute = "0" + this.eventMinute;
-    }
-    if (this.eventHour < 10) {
-      this.eventHour = "0" + this.eventHour;
-    }
-    return `${this.eventHour}:${this.eventMinute}`;
-  },
+  eventStartTime: "",
+  eventEndTime: "",
   getEventDate: function () {
     if (this.eventMonth < 10) {
       this.eventMonth = "0" + this.eventMonth;
@@ -38,6 +30,17 @@ let dateTimeObj = {
     }
     return `${this.eventYear}-${this.eventMonth}-${this.eventDate}`;
   },
+};
+// all events list
+const allEvents = {
+  event_7132023: [
+    {
+      name: "Meeting with bose",
+      startTime: "09:00",
+      endTime: "12:00",
+      body: "Some text here",
+    },
+  ],
 };
 
 // All month's name
@@ -118,6 +121,54 @@ const createMonthsList = () => {
 };
 createMonthsList();
 
+// get unique event name
+const getUniqueEventName = (dateCell) => {
+  let uniqueEventName;
+  if (dateCell.title) {
+    uniqueEventName = "event" + "_" + dateCell.title.split("-").join("");
+  } else {
+    uniqueEventName =
+      "event" +
+      "_" +
+      (dateObj.getMonth() + 1) +
+      dateObj.getDate() +
+      dateObj.getFullYear();
+  }
+  return uniqueEventName;
+};
+// show no of events on date cell
+const showNoEventsOnDateCell = (dateCell) => {
+  let uniqueEventName = getUniqueEventName(dateCell);
+  for (let eventName in allEvents) {
+    if (eventName === uniqueEventName) {
+      dateCell.innerHTML += `<span class="event-count">${allEvents[uniqueEventName].length}</span>`;
+    }
+  }
+  // console.log(uniqueEventName);
+};
+// show all events click on dateCell
+// console.log(new Date())
+const showEventsOnClick = (dateCell) => {
+  ul.innerHTML = "";
+  let uniqueEventName = getUniqueEventName(dateCell);
+  for (let eventName in allEvents) {
+    if (eventName === uniqueEventName) {
+      for (let event of allEvents[uniqueEventName]) {
+        const li = document.createElement("li");
+        li.className = "event";
+        li.innerHTML = `
+      <div class="event-name">${event.name}</div>
+      <div class="event-time">${event.startTime} Am - ${event.endTime} AM</div>
+      <button class="event-menu" title="event-menu">
+        <i class="fa-solid fa-ellipsis-stroke"></i>
+      </button>
+      `;
+        ul.append(li);
+      }
+    }
+  }
+};
+
 // create all date list
 const createDateList = (currentMonth) => {
   datesElem.innerHTML = "";
@@ -149,20 +200,26 @@ const createDateList = (currentMonth) => {
     const dateElem = document.createElement("div");
     if (currentDate + monthsList[dateObj.getMonth()] === date + currentMonth) {
       dateElem.className = "date curr-date active-date";
+      dateTimeObj = { ...dateTimeObj, dateElem };
+      showEventsOnClick(dateElem);
     } else {
       dateElem.className = "date curr-date";
     }
-    dateElem.setAttribute(
-      "title",
-      `${monthsList.indexOf(currentMonth) + 1}-${date}-${dateObj.getFullYear()}`
-    );
     if (num >= new Date(`1-${currentMonth}-2023`).getDay()) {
+      dateElem.setAttribute(
+        "title",
+        `${
+          monthsList.indexOf(currentMonth) + 1
+        }-${date}-${dateObj.getFullYear()}`
+      );
       dateElem.innerHTML += `<span>${date}</span>`;
       date++;
+      showNoEventsOnDateCell(dateElem);
     }
     datesElem.append(dateElem);
     num++;
     dateElem.onclick = (e) => {
+      ul.innerHTML = "";
       showSelectedDate(dateElem);
       selectedFullDate = e.currentTarget.title;
       selectedMonth = selectedFullDate.split("-")[0] - 1;
@@ -182,6 +239,7 @@ const createDateList = (currentMonth) => {
       } else {
         showFullDate(currentDate, currentDay, currentMonth);
       }
+      showEventsOnClick(dateElem);
     };
   }
 };
@@ -236,12 +294,13 @@ function getFullDate(date, day, month, year) {
   // console.log({ date, day, month, year });
 }
 
+const inputs = module.querySelectorAll("input");
+// set initial values for all input on clicking add-event-btn
 addEventBtn.addEventListener("click", () => {
   module.classList.add("open-module");
-  const inputs = module.querySelectorAll("input");
   inputs.forEach((input) => {
     if (input.id === "startTime" || input.id === "endTime") {
-      input.value = dateTimeObj.getEventTime();
+      input.value = dateTimeObj.eventStartTime;
     } else if (input.id === "eventDate") {
       input.value = dateTimeObj.getEventDate();
     } else if (input.id === "eventName") {
@@ -249,24 +308,43 @@ addEventBtn.addEventListener("click", () => {
       dateTimeObj = { ...dateTimeObj, eventName: input.value };
     }
   });
-  console.log(dateTimeObj);
 });
 
 // handle submit module form
-const ul = eventsElem.querySelector("ul");
 const handleSubmit = (e) => {
   e.preventDefault();
-  console.log(dateTimeObj.getEventTime());
-  const li = document.createElement("li");
-  li.className = "event";
-  li.innerHTML = `
-  <div class="event-name">${dateTimeObj.eventName}</div>
-  <div class="event-time">${dateTimeObj.getEventTime()} Am - ${dateTimeObj.getEventTime()} AM</div>
-  <button class="event-menu" title="event-menu">
-    <i class="fa-solid fa-ellipsis-stroke"></i>
-  </button>
-  `;
-  ul.append(li);
+  inputs.forEach((input) => {
+    if (input.id === "startTime") {
+      dateTimeObj = { ...dateTimeObj, eventStartTime: input.value };
+    } else if (input.id === "endTime") {
+      dateTimeObj = { ...dateTimeObj, eventEndTime: input.value };
+    } else if (input.id === "eventDate") {
+      dateTimeObj = {
+        ...dateTimeObj,
+        eventDate: parseInt(input.value.split("-")[2]),
+        eventMonth: parseInt(input.value.split("-")[1]),
+        eventYear: parseInt(input.value.split("-")[0]),
+      };
+    } else if (input.id === "eventName") {
+      dateTimeObj = { ...dateTimeObj, eventName: input.value };
+    }
+  });
+  let uniqueEventName = getUniqueEventName(dateTimeObj.dateElem);
+  ul.innerHTML = "";
+  let newObj = {
+    name: dateTimeObj.eventName,
+    startTime: dateTimeObj.eventStartTime,
+    endTime: dateTimeObj.eventEndTime,
+  };
+  if (uniqueEventName in allEvents) {
+    allEvents[uniqueEventName].push(newObj)
+  } else {
+    let newArr = [];
+    newArr.push(newObj);
+    allEvents[uniqueEventName] = [...newArr];
+  }
+  showEventsOnClick(dateTimeObj.dateElem);
+  showNoEventsOnDateCell(dateTimeObj.dateElem);
   module.classList.remove("open-module");
 };
 
