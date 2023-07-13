@@ -10,5 +10,6 @@ export const projects = [
   "Image gallery",
   "Profile Statistics",
   "Counter Animation",
-  "Image slider"
+  "Image slider",
+  "Calendar"
 ];
