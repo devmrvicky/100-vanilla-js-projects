@@ -33,9 +33,9 @@ let dateTimeObj = {
 };
 // all events list
 const allEvents = {
-  event_7132023: [
+  event_7162023: [
     {
-      name: "Meeting with bose",
+      name: "Meeting with boss",
       startTime: "09:00",
       endTime: "12:00",
       body: "Some text here",
@@ -146,6 +146,11 @@ const showNoEventsOnDateCell = (dateCell) => {
   }
   // console.log(uniqueEventName);
 };
+
+// const fun = (element) => {
+//   console.log(element);
+// };
+
 // show all events click on dateCell
 // console.log(new Date())
 const showEventsOnClick = (dateCell) => {
@@ -158,13 +163,13 @@ const showEventsOnClick = (dateCell) => {
         li.className = "event";
         li.innerHTML = `
           <div class="event-name">${event.name}</div>
-          <div class="event-time">${event.startTime} Am - ${event.endTime} AM</div>
+          <div class="event-time">${event.startTime} AM - ${event.endTime} AM</div>
           <button class="event-menu" title="event-menu">
             <span class="dot"></span>
             <span class="dot"></span>
             <span class="dot"></span>
           </button>
-          `;
+        `;
         ul.append(li);
       }
     }
@@ -361,3 +366,38 @@ moduleCtrlBtns.forEach((btn) => {
     }
   });
 });
+
+const clearEvent = e => {
+  
+}
+
+const eventBtn = document.querySelectorAll(".event-menu");
+// console.log(eventBtn)
+let isAppend = true;
+// eventBtn?.addEventListener("click", (e) => {
+//   let x;
+//   const eventMoreOpt = document.createElement("div");
+//   eventMoreOpt.className = "event-more-opt";
+//   const clearEventBtn = document.createElement("button");
+//   clearEventBtn.className = "clear-event";
+//   clearEventBtn.innerHTML = `
+//     <span class="cross"></span>
+//     <span>Clear event</span>
+//   `;
+//   clearEventBtn.onclick = e => {
+//     clearEvent(e)
+//   }
+//   eventMoreOpt.insertAdjacentElement("beforeend", clearEventBtn);
+//   if (isAppend) {
+//     isAppend = false;
+//     e.currentTarget.insertAdjacentElement("afterend", eventMoreOpt);
+//     // x = setTimeout(() => {
+//     //   isAppend = true;
+//     //   eventMoreOpt.remove();
+//     // }, 3000);
+//   } else {
+//     // clearTimeout(x)
+//     e.currentTarget.nextElementSibling.remove();
+//     isAppend = true;
+//   }
+// });

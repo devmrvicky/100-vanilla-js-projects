@@ -254,6 +254,48 @@ main#app {
   font-size: .7rem;
   color: #999;
 }
+.event-more-opt{
+  width: 100%;
+  max-width: 160px;
+  background-color: #f0f0f09a;
+  position: absolute;
+  padding: 5px;
+  right: 20px;
+}
+.clear-event{
+  padding: 5px 10px !important;
+  margin: 0 !important;
+  border: none;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: poppins;
+  font-size: .9rem;
+}
+.clear-event:hover{
+  background: #dfdfdf7a;
+}
+.cross{
+  position: relative;
+  width: 20px;
+  height: 20px;
+transform: rotate(45deg);
+}
+.cross::before,
+.cross::after{
+  content: '';
+  width: 100%;
+  height: 2px;
+  background-color: #999;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.cross::after{
+  transform: translate(-50%, -50%) rotate(90deg);
+}
 
 /* event creator button */
 .add-event-btn {
