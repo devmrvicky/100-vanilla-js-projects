@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather</title>
+  <!-- main style sheet -->
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="./style.css">
+  <!-- responsive css -->
+  <link rel="stylesheet" href="../../css/responsive.css">
+  <!-- main JavaScript file -->
+  <script type="module" src="../../js/main.js" defer></script>
+  <!-- tip-calculator js -->
+  <script type="module" src="./script.js" defer></script>
+  <!-- font awesome cdn link -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+
+<body>
+  <!-- Nav bar -->
+  <nav>
+    <!-- menu button -->
+    <button type="button" title="show-projects-menu" class="menu">
+      <span class="line"></span>
+    </button>
+    <!-- Title -->
+    <h1>100 JS PROJECTS</h1>
+    <!-- search from -->
+    <form action="">
+      <label for="search" aria-hidden="true">search</label>
+      <input type="search" name="search" id="search" placeholder="search projects">
+      <button type="submit">search</button>
+    </form>
+  </nav>
+  <!-- side bar -->
+  <aside>
+    <h3>Projects</h3>
+    <hr>
+    <ul class="projects-list">
+      <!-- here li tag will append using JS -->
+    </ul>
+    <hr>
+    <p class="total-projects"></p>
+  </aside>
+  <!-- Project code -->
+  <main id="app" data-project-name="weather">
+    <h1>Weather</h1>
+    <div class="weather">
+      <!-- main weather -->
+      <div class="main-weather">
+        <div class="head">
+          <div class="profile">
+            <img src="../../img/profile.jpg" alt="profile">
+          </div>
+          <div class="notification">
+            <i class="fa fa-bell"></i>
+          </div>
+          <form action="">
+            <i class="fa-solid fa-location-dot"></i>
+            <label for="search-city">search city</label>
+            <input type="search" name="search" id="search-city" placeholder="Search...">
+            <button type="submit" title="submit">
+              <i class="fa fa-search"></i>
+            </button>
+          </form>
+        </div>
+        <div class="default-city-weather">
+          <div class="default-city-weather-data">
+            <div class="city">
+              <i class="fa-solid fa-location-dot"></i>
+              <p>Patna</p>
+              <i class="fa fa-angle-down"></i>
+            </div>
+            <img src="" alt="weather-icon" class="weather-icon">
+            <i class="fa-solid fa-cloud-bolt"></i>
+            <div class="date">Today, 14 April</div>
+            <div class="temperature">
+              29<sup>o</sup>
+            </div>
+            <div class="weather-name">Sunny</div>
+            <div class="wind">
+              <i class="fa fa-wind"></i>
+              <span>Wind</span>
+              <span class="divider"></span>
+              <span>19 km/h</span>
+            </div>
+            <div class="hum">
+              <i class="fa-solid fa-droplet"></i>
+              <span>Hum</span>
+              <span class="divider"></span>
+              <span>22 %</span>
+            </div>
+          </div>
+          <!-- city weather data -->
+          <div class="city-weather-data">
+            <div>
+              <div class="wind">
+                <i class="fa fa-wind"></i>
+                <span>Wind</span>
+                <span class="divider"></span>
+                <span>19 km/h</span>
+              </div>
+              <div class="hum">
+                <i class="fa-solid fa-droplet"></i>
+                <span>Hum</span>
+                <span class="divider"></span>
+                <span>22 %</span>
+              </div>
+            </div>
+            <div>
+              <div class="city">
+                <i class="fa-solid fa-location-dot"></i>
+                <p>Delhi</p>
+                <i class="fa fa-angle-down"></i>
+              </div>
+              <div class="temperature">
+                29<sup>o</sup>
+              </div>
+            </div>
+          </div>
+          <div class="city-weather-data">
+            <div>
+              <div class="wind">
+                <i class="fa fa-wind"></i>
+                <span>Wind</span>
+                <span class="divider"></span>
+                <span>19 km/h</span>
+              </div>
+              <div class="hum">
+                <i class="fa-solid fa-droplet"></i>
+                <span>Hum</span>
+                <span class="divider"></span>
+                <span>22 %</span>
+              </div>
+            </div>
+            <div>
+              <div class="city">
+                <i class="fa-solid fa-location-dot"></i>
+                <p>Delhi</p>
+                <i class="fa fa-angle-down"></i>
+              </div>
+              <div class="temperature">
+                29<sup>o</sup>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- main weather data -->
+      <div class="weather-data">
+
+        <!-- weather data head -->
+        <div class="weather-data-head">
+          <div class="date">
+            <div>07:32 AM</div>
+            <div>Wednesday, 14 April, 2021</div>
+          </div>
+        </div>
+
+        <!-- greeting -->
+        <div class="greeting">
+          <i class="fa-solid fa-sun"></i>
+          <span>Good morning,</span>
+          <span>Vikash!</span>
+        </div>
+        <div class="weather-data-list">
+          <!-- days -->
+          <ul class="days">
+            <li class="day">
+              <i class="fa fa-bolt-lightning"></i>
+              <span>Sun</span>
+              <span>28<sup>0</sup></span>
+            </li>
+            <li class="day">
+              <i class="fa fa-droplet"></i>
+              <span>Mon</span>
+              <span>17<sup>o</sup></span>
+            </li>
+            <li class="day">
+              <i class="fa-solid fa-cloud-sun-rain"></i>
+              <span>Tue</span>
+              <span>20<sup>o</sup></span>
+            </li>
+            <li class="day">
+              <i class="fa-solid fa-cloud-bolt"></i>
+              <span>Wed</span>
+              <span>29<sup>o</sup></span>
+            </li>
+            <li class="day">
+              <i class="fa-solid fa-moon"></i>
+              <span>Thu</span>
+              <span>22<sup>o</sup></span>
+            </li>
+            <li class="day">
+              <i class="fa-solid fa-cloud-moon"></i>
+              <span>Fri</span>
+              <span>16<sup>o</sup></span>
+            </li>
+            <li class="day">
+              <i class="fa-solid fa-cloud-moon-rain"></i>
+              <span>Sat</span>
+              <span>16<sup>o</sup></span>
+            </li>
+          </ul>
+          <!-- air quality -->
+          <section class="section air-quality-section">
+            <div class="section-head">
+              <h3>Air Quality Index</h3>
+              <div class="city">
+                <i class="fa-solid fa-location-dot"></i>
+                <p>Patna</p>
+                <i class="fa fa-angle-down"></i>
+              </div>
+            </div>
+            <!-- air quality good or bad -->
+            <div class="air-quality">
+              <div>
+                <i class="fa fa-wind"></i>
+                <div>
+                  <p>Good</p>
+                  <span>A perfect day for a walk!</span>
+                </div>
+              </div>
+              <button type="button">Refresh</button>
+            </div>
+            <!-- air-quality-index -->
+            <ul class="gases">
+              <li>
+                <span>9.3</span>
+                <span>PM2</span>
+              </li>
+              <li>
+                <span>12.2</span>
+                <span>PM10</span>
+              </li>
+              <li>
+                <span>4.8</span>
+                <span>SO<sub>2</sub></span>
+              </li>
+              <li>
+                <span>4.6</span>
+                <span>NO<sub>2</sub></span>
+              </li>
+              <li>
+                <span>6.5</span>
+                <span>O<sub>2</sub></span>
+              </li>
+              <li>
+                <span>0.9</span>
+                <span>CO</span>
+              </li>
+            </ul>
+          </section>
+
+          <!-- sunrise & sunset -->
+          <section class="sunrise-sunset">
+            <div class="section-head">
+              <h3>Sunrise & Sunset</h3>
+              <button type="button" title="add city"><i class="fa fa-plus"></i></button>
+            </div>
+            <ul>
+              <li class="city-time selected-city">
+                <div class="city">
+                  <i class="fa-solid fa-location-dot"></i>
+                  <p>Patna</p>
+                  <i class="fa-solid fa-ellipsis-vertical"></i>
+                </div>
+                <div class="sunrise-time">
+                  <i class="fa fa-sun"></i>
+                  <div>
+                    <span>Sunrise</span>
+                    <span>4:40 AM</span>
+                  </div>
+                </div>
+                <div class="sunset-time">
+                  <i class="fa fa-moon"></i>
+                  <div>
+                    <span>Sunrise</span>
+                    <span>4:40 AM</span>
+                  </div>
+                </div>
+              </li>
+              <li class="city-time selected-city">
+                <div class="city">
+                  <i class="fa-solid fa-location-dot"></i>
+                  <p>Patna</p>
+                  <i class="fa-solid fa-ellipsis-vertical"></i>
+                </div>
+                <div class="sunrise-time">
+                  <i class="fa fa-sun"></i>
+                  <div>
+                    <span>Sunrise</span>
+                    <span>4:40 AM</span>
+                  </div>
+                </div>
+                <div class="sunset-time">
+                  <i class="fa fa-moon"></i>
+                  <div>
+                    <span>Sunrise</span>
+                    <span>4:40 AM</span>
+                  </div>
+                </div>
+              </li>
+              <!-- <hr> -->
+              <li class="city-time other-city">
+                <div class="city">
+                  <i class="fa-solid fa-location-dot"></i>
+                  <p>Patna</p>
+                </div>
+                <div class="sunrise-time">
+                  <i class="fa fa-sun"></i>
+                  <span>4:40 AM</span>
+                </div>
+                <div class="sunset-time">
+                  <i class="fa fa-moon"></i>
+                  <span>4:40 AM</span>
+                </div>
+              </li>
+              <li class="city-time other-city">
+                <div class="city">
+                  <i class="fa-solid fa-location-dot"></i>
+                  <p>Patna</p>
+                </div>
+                <div class="sunrise-time">
+                  <i class="fa fa-sun"></i>
+                  <span>4:40 AM</span>
+                </div>
+                <div class="sunset-time">
+                  <i class="fa fa-moon"></i>
+                  <span>4:40 AM</span>
+                </div>
+              </li>
+            </ul>
+          </section>
+
+          <!-- Monthly rainfall -->
+          <section class="section monthly-rainfall">
+            <div class="section-head">
+              <h3>Monthly Rainfall</h3>
+              <div class="rain-sun">
+                <div class="rain">
+                  <span class="rain-indicator"></span>
+                  <span>Rain</span>
+                </div>
+                <div class="sun">
+                  <span class="sun-indicator"></span>
+                  <span>Sun</span>
+                </div>
+              </div>
+            </div>
+            <ul>
+              <li>
+                <span class="rain-per"></span><span class="sun-per"></span>
+              </li>
+              <li>
+                <span class="rain-per"></span><span class="sun-per"></span>
+              </li>
+              <li>
+                <span class="rain-per"></span><span class="sun-per"></span>
+              </li>
+              <li>
+                <span class="rain-per"></span><span class="sun-per"></span>
+              </li>
+              <li>
+                <span class="rain-per"></span><span class="sun-per"></span>
+              </li>
+              <li>
+                <span class="rain-per"></span><span class="sun-per"></span>
+              </li>
+              <li>
+                <span class="rain-per"></span><span class="sun-per"></span>
+              </li>
+              <li>
+                <span class="rain-per"></span><span class="sun-per"></span>
+              </li>
+              <li>
+                <span class="rain-per"></span><span class="sun-per"></span>
+              </li>
+              <li>
+                <span class="rain-per"></span><span class="sun-per"></span>
+              </li>
+              <li>
+                <span class="rain-per"></span><span class="sun-per"></span>
+              </li>
+              <li>
+                <span class="rain-per"></span><span class="sun-per"></span>
+              </li>
+            </ul>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+
+</html>
