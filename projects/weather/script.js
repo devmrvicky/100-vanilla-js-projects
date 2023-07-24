@@ -1,7 +1,6 @@
 const dateElem = document.querySelector(".weather-data .date");
 const searchForm = document.querySelector(".main-weather form");
 const defaultCityWeatherElem = document.querySelector(".default-city-weather");
-const locationElem = document.querySelectorAll(".city-name");
 
 // month list
 const monthsList = [
@@ -62,21 +61,54 @@ const getCurrentTime = () => {
 };
 getCurrentTime();
 
-const showWeatherData = ({ current, location }) => {
+const getFullDate = (ms) => {
+  const dateObj = new Date(ms);
+  const year = dateObj.getFullYear();
+  const month = ("0" + dateObj.getMonth()).slice(-2);
+  const day = ("0" + dateObj.getDay()).slice(-2);
+  const date = ("0" + dateObj.getDate()).slice(-2);
+  const hour = ("0" + dateObj.getMonth()).slice(-2);
+  const minute = ("0" + dateObj.getMinutes()).slice(-2);
+  const second = ("0" + dateObj.getSeconds()).slice(-2);
+  console.log({
+    year,
+    month: [parseInt(month) + 1, monthsList[parseInt(month)]],
+    day: daysList[parseInt(day)],
+    date,
+    hour,
+    minute,
+    second,
+  });
+};
+getFullDate(1690166726);
+
+const showWeatherData = (data) => {
+  console.log(data);
   // const { weather_icons } = current;
-  const { name, country, region } = location;
-  locationElem.querySelector(
-    "p"
-  ).textContent = `${name}, ${country}, ${region}`;
-  defaultCityWeatherElem
-    .querySelector(".weather-icon")
-    .setAttribute("src", current.weather_icons[0]);
+  // const { name, country, region } = location;
+  defaultCityWeatherElem.querySelector(
+    ".city-name"
+  ).textContent = `${data.name}, ${data.sys.country}`;
+  // defaultCityWeatherElem
+  //   .querySelector(".weather-icon")
+  //   .setAttribute("src", current.weather_icons[0]);
+  defaultCityWeatherElem.querySelector(
+    ".temperature"
+  ).innerHTML = `${data.main.temp}<sup>o</sup`;
 };
 
-const API_KEY = "70b7edac0b1ec947a50b3768989f4d69";
+const API_KEY = "a9eff1a8b2bc670c4017e376978cbcb5";
 
-const getWeatherData = async (location) => {
-  const URL = `http://api.weatherstack.com/current?access_key=${API_KEY}&query=${location}`;
+const getCoordinate = async (location) => {
+  const URL = `http://api.openweathermap.org/geo/1.0/direct?q=${location}&appid=${API_KEY}`;
+  const response = await fetch(URL);
+  const data = await response.json();
+  return data;
+};
+
+const getWeatherData = async ({ lat, lon }) => {
+  const URL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${API_KEY}`;
+  console.log(URL);
   const response = await fetch(URL);
   const data = await response.json();
   return data;
@@ -87,11 +119,8 @@ const getLocation = async (e) => {
   const searchInput = e.currentTarget[0];
   if (!searchInput.value) return;
   const location = searchInput.value;
-  const weatherData = await getWeatherData(location);
-  if (weatherData.error) {
-    console.log(weatherData.error);
-    return;
-  }
+  const coordinate = await getCoordinate(location);
+  const weatherData = await getWeatherData(coordinate[0]);
   showWeatherData(weatherData);
 };
 
