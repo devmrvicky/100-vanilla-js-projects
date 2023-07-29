@@ -12,6 +12,10 @@ main#app {
   }
 }
 
+img {
+  width: 100%;
+}
+
 #app :is(button) {
   width: unset;
 }
@@ -101,6 +105,12 @@ form,
   display: flex;
   flex-direction: column;
   gap: 20px;
+
+  & .date {
+    &>div {
+      color: #fff;
+    }
+  }
 }
 
 .default-city-weather-data {
@@ -115,8 +125,32 @@ form,
 
   & .city {
     font-size: 1.5rem;
-    padding-bottom: 40px;
     align-self: flex-start;
+    width: 100%;
+
+    & a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: white;
+
+      &:hover {
+        &>p {
+          text-decoration: underline;
+        }
+      }
+    }
+
+
+    .fa-rotate-right {
+      font-size: 1.1rem;
+      margin-left: auto;
+    }
+  }
+
+  .img-container {
+    width: 200px;
   }
 
   & i.fa-cloud-bolt {
