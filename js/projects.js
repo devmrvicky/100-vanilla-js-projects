@@ -12,5 +12,6 @@ export const projects = [
   "Counter Animation",
   "Image slider",
   "Calendar",
-  "Weather"
+  "Weather",
+  "Task manager",
 ];
