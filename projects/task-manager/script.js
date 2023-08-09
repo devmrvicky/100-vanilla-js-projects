@@ -1,3 +1,5 @@
+// import { flip } from "./dashboard.js";
+
 const menuOptions = document.querySelectorAll(".menu-option");
 const taskManagerContent = document.querySelector(".task-manager-content");
 
@@ -218,6 +220,8 @@ const showRecentTaskList = (tasks, taskList, isFromFolder) => {
   }
 };
 const getRecentTaskPage = () => {
+  // isAppend = true;
+  // flip();
   getNoOfAllTask();
   const recentTaskContent = document.createElement("div");
   recentTaskContent.className = "w-full flex gap-5";
@@ -374,3 +378,7 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+// export something
+export default allTasks;
+export { allTaskList, taskManagerContent, allFolders, getNoOfAllTask };

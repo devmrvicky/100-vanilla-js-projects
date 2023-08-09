@@ -367,9 +367,7 @@ moduleCtrlBtns.forEach((btn) => {
   });
 });
 
-const clearEvent = e => {
-  
-}
+const clearEvent = (e) => {};
 
 const eventBtn = document.querySelectorAll(".event-menu");
 // console.log(eventBtn)
