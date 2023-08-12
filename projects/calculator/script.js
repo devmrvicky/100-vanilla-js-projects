@@ -13,6 +13,15 @@ let expressionArr = [];
 let prevExpressionArr = [];
 let prevCalculations = [];
 
+// click effect for buttons
+const applyClickEffect = (btn) => {
+  btn.classList.add("click-effect");
+
+  setTimeout(() => {
+    btn.classList.remove("click-effect");
+  }, 500);
+};
+
 const getExpression = (expressionArr) => {
   let expressionHTML = "";
   for (let elem of expressionArr) {
@@ -109,6 +118,7 @@ function showPrevCalculationsOnHisTab() {
       if (ctrlMenuElem) {
         ctrlMenuElem.remove();
       }
+      applyClickEffect(prevCalculation);
     };
 
     // show copy and delete option on right click on individual calculation
@@ -132,7 +142,8 @@ function showPrevCalculationsOnHisTab() {
       `;
       let x = e.offsetX,
         y = e.offsetY;
-      ul.style.left = x + "px";
+      let xDistance = prevCalculation.clientWidth - x >= 90;
+      ul.style.left = (xDistance ? x : x - 90) + "px";
       ul.style.top = y + "px";
       prevCalculation.insertAdjacentElement("beforeend", ul);
 
@@ -149,7 +160,6 @@ function showPrevCalculationsOnHisTab() {
             // Copy the selected text to the clipboard
             try {
               document.execCommand("copy");
-              console.log("Text copied to clipboard");
             } catch (err) {
               console.error("Failed to copy text:", err);
             }
@@ -226,6 +236,7 @@ const clearAllHistory = () => {
   <li class="prev-calculation flex">
     <p class="his-message">There's no history yet.</p>
   </li>`;
+  applyClickEffect(clearHistoryBtn);
 };
 clearHistoryBtn.addEventListener("click", clearAllHistory);
 
@@ -299,7 +310,6 @@ const updateExpressionArr = (value) => {
     } else {
       expressionArr = ["-(", ...expressionArr];
     }
-    console.log(expressionArr);
   } else if (value === "backspace") {
     expressionArr.pop();
   } else if (
@@ -340,7 +350,24 @@ calcBtns.forEach((btn) => {
   btn.addEventListener("click", (e) => {
     let btnValue = e.currentTarget.dataset.value;
     updateExpressionArr(btnValue);
+    applyClickEffect(btn);
   });
+});
+
+// expressionElem
+expressionElem.addEventListener("click", (e) => {
+  if (e.target.tagName !== "SPAN") return;
+  const input = document.createElement("input");
+  input.value = expressionArr.join("");
+  e.currentTarget.insertAdjacentElement("afterend", input);
+  input.focus();
+  input.oninput = () => {
+    expressionArr = [...input.value];
+    showExpressionOnscreen();
+  };
+  input.onblur = () => {
+    input.remove();
+  };
 });
 
 // toggle side bar

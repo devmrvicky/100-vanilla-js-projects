@@ -148,6 +148,17 @@ main#app {
   font-weight: 600;
   color: #999;
   font-family: poppins;
+  cursor: default;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.prev-equation:hover span {
+  background-color: var(--hover-color)
+}
+
+.calc-equation span:last-child {
+  color: red;
 }
 
 table {
@@ -182,9 +193,9 @@ td {
 
 
 
-  &:hover {
+  /* &:hover {
     transform: scale(.9);
-  }
+  } */
 }
 
 .fa-circle {
@@ -304,7 +315,7 @@ td {
   flex-direction: column;
   gap: 5px;
   border-radius: 5px;
-  background: rgba(220, 238, 250, 0.685);
+  background: rgba(220, 238, 250);
   box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.089);
   position: absolute;
   z-index: 999;
@@ -331,7 +342,7 @@ td {
     z-index: 999;
     background: #fff;
     transform: translateX(-100%);
-    transition: all .5s ease-in-out
+    transition: all .2s ease-in-out
   }
 
   main#app.toggle-side-bar #calc-side-bar {
@@ -378,5 +389,24 @@ td {
 
   #history-tab.toggle-history-tab {
     transform: translateX(0);
+  }
+}
+
+/* click effect */
+.click-effect {
+  animation: clickEffect .5s forwards alternate;
+}
+
+@keyframes clickEffect {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(.8);
+  }
+
+  100% {
+    transform: scale(1);
   }
 }
