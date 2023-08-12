@@ -14,4 +14,5 @@ export const projects = [
   "Calendar",
   "Weather",
   "Task manager",
+  "Calculator",
 ];
