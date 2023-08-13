@@ -351,6 +351,9 @@ calcBtns.forEach((btn) => {
     let btnValue = e.currentTarget.dataset.value;
     updateExpressionArr(btnValue);
     applyClickEffect(btn);
+
+    const audio = new Audio('click-sound.mp3')
+    audio.play()
   });
 });
 
