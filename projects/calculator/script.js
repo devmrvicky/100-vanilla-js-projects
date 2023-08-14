@@ -86,6 +86,13 @@ const reverseFromHistoryTab = ({ expression, result }) => {
   showExpressionOnscreen();
 };
 
+let animDelay = 0;
+const applyDeleteCalculationAnim = (elem) => {
+  elem.classList.add("show-anim-on-clear");
+  elem.style.animationDelay = animDelay + "s";
+  animDelay += 0.2;
+};
+
 const deleteIndividualCalculation = ({ id }) => {
   const newPreCalculations = prevCalculations.filter(
     (calculation) => calculation.id !== id
@@ -100,6 +107,7 @@ function showPrevCalculationsOnHisTab() {
   for (let calculation of prevCalculations.reverse()) {
     const prevCalculation = document.createElement("li");
     prevCalculation.className = "prev-calculation flex";
+    prevCalculation.setAttribute("data-id", calculation.id);
     prevCalculation.innerHTML = `
     <div>
       <p class="expression">${getExpression(calculation.expression)}</p>
@@ -119,6 +127,9 @@ function showPrevCalculationsOnHisTab() {
         ctrlMenuElem.remove();
       }
       applyClickEffect(prevCalculation);
+      setTimeout(() => {
+        toggleHistoryTab();
+      }, 500);
     };
 
     // show copy and delete option on right click on individual calculation
@@ -167,7 +178,11 @@ function showPrevCalculationsOnHisTab() {
             // Clear the selection
             window.getSelection().removeAllRanges();
           } else {
-            deleteIndividualCalculation(calculation);
+            applyDeleteCalculationAnim(prevCalculation);
+            setTimeout(() => {
+              deleteIndividualCalculation(calculation);
+              animDelay = 0;
+            }, animDelay * 1000);
           }
         });
       });
@@ -233,12 +248,25 @@ const clearAllHistory = () => {
   prevCalculations = [];
   showPrevCalculationsOnHisTab();
   prevCalculationsElem.innerHTML = `
-  <li class="prev-calculation flex">
+  <li class="flex">
     <p class="his-message">There's no history yet.</p>
   </li>`;
-  applyClickEffect(clearHistoryBtn);
+  setTimeout(() => {
+    toggleHistoryTab();
+  }, 500);
 };
-clearHistoryBtn.addEventListener("click", clearAllHistory);
+clearHistoryBtn.addEventListener("click", () => {
+  const prevCalculationsList =
+    prevCalculationsElem.querySelectorAll(".prev-calculation");
+  for (let prevCalculationItem of Array.from(prevCalculationsList)) {
+    applyDeleteCalculationAnim(prevCalculationItem);
+  }
+  setTimeout(() => {
+    clearAllHistory();
+    animDelay = 0;
+  }, animDelay * 1000);
+  applyClickEffect(clearHistoryBtn);
+});
 
 // reverse from prevExpressionArr to expressionArr
 PrevExpressionElem.addEventListener("dblclick", () => {
@@ -298,7 +326,12 @@ const updateExpressionArr = (value) => {
       expressionArr = [cal];
       let timeObj = getTimeObj();
       prevCalculations = [
-        { expression: prevExpressionArr, result: expressionArr, ...timeObj },
+        {
+          expression: prevExpressionArr,
+          result: expressionArr,
+          ...timeObj,
+          id: `calculation_${prevCalculations.length + 1}`,
+        },
         ...prevCalculations,
       ];
       showPrevCalculationsOnHisTab();
@@ -352,8 +385,8 @@ calcBtns.forEach((btn) => {
     updateExpressionArr(btnValue);
     applyClickEffect(btn);
 
-    const audio = new Audio('click-sound.mp3')
-    audio.play()
+    const audio = new Audio("click-sound.mp3");
+    audio.play();
   });
 });
 

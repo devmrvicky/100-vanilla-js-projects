@@ -277,6 +277,22 @@ td {
   }
 }
 
+.prev-calculation.show-anim-on-clear {
+  animation: clearPrevCalculationAnimation .5s forwards alternate;
+}
+
+@keyframes clearPrevCalculationAnimation {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
 .his-message {
   font-size: .8rem;
 }
