@@ -7,12 +7,7 @@ export const projects = [
   "Rock paper scissors",
   "Step progress bar",
   "random-quotes",
-  "Image gallery",
   "Profile Statistics",
   "Counter Animation",
   "Image slider",
-  "Calendar",
-  "Weather",
-  "Task manager",
-  "Calculator",
 ];
